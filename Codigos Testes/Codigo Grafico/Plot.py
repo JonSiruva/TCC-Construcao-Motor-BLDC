@@ -35,7 +35,7 @@ def plot_step_response(csv_file):
     plt.plot(df_zoom1['Tempo(s)'], df_zoom1['Real(deg)'], '-', label='Resposta Real', color='tab:orange')
     plt.xlabel('Tempo (s)')
     plt.ylabel('Resposta (graus)')
-    plt.title('Resposta ao Degrau - Zoom no Transiente (0 a 360 graus)')
+    plt.title('Resposta ao Degrau - Zoom no Transiente (0º - 360º)')
     plt.grid(True, linestyle='--', alpha=0.7)
     plt.legend()
     plt.tight_layout()
@@ -47,21 +47,31 @@ def plot_step_response(csv_file):
     plt.plot(df_zoom2['Tempo(s)'], df_zoom2['Real(deg)'], '-', label='Resposta Real', color='tab:orange')
     plt.xlabel('Tempo (s)')
     plt.ylabel('Resposta (graus)')
-    plt.title('Resposta ao Degrau - Zoom no Transiente (360 a 0 graus)')
+    plt.title('Resposta ao Degrau - Zoom no Transiente (360º - 0º)')
     plt.grid(True, linestyle='--', alpha=0.7)
     plt.legend()
     plt.tight_layout()
     plt.savefig(CAMINHO_PLOT + 'magnified_step_response_2.png', dpi=300)
 
-    # --- Plot 4: Erro de Posicionamento ---
+    # --- Plot 4: Erro de Posicionamento de 0 a 360º ---
     plt.figure(figsize=(10, 6))
-    plt.plot(df['Tempo(s)'], df['Erro(deg)'], '-', color='tab:blue')
+    plt.plot(df_zoom1['Tempo(s)'], df_zoom1['Erro(deg)'], '-', color='tab:blue')
     plt.xlabel('Tempo (s)')
     plt.ylabel('Erro (graus)')
     plt.title('Resposta ao Degrau - Erro de Posicionamento')
     plt.grid(True, linestyle='--', alpha=0.7)
     plt.tight_layout()
-    plt.savefig(CAMINHO_PLOT + 'error_response.png', dpi=300)
+    plt.savefig(CAMINHO_PLOT + 'error_response1.png', dpi=300)
+
+    # --- Plot 5: Erro de Posicionamento de 360º a 0º ---
+    plt.figure(figsize=(10, 6))
+    plt.plot(df_zoom2['Tempo(s)'], df_zoom2['Erro(deg)'], '-', color='tab:blue')
+    plt.xlabel('Tempo (s)')
+    plt.ylabel('Erro (graus)')
+    plt.title('Resposta ao Degrau - Erro de Posicionamento')
+    plt.grid(True, linestyle='--', alpha=0.7)
+    plt.tight_layout()
+    plt.savefig(CAMINHO_PLOT + 'error_response2.png', dpi=300)
 
 if __name__ == "__main__":
     plot_step_response(CAMINHO_CSV)
