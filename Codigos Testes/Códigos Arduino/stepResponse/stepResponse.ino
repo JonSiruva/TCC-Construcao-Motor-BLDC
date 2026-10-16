@@ -56,14 +56,14 @@ void setup() {
   motor.controller = MotionControlType::angle;
 
   // Ajuste o PID conforme a necessidade do seu motor para melhorar o tempo de acomodação
-  motor.PID_velocity.P = 0.021;
-  motor.PID_velocity.I = 0.12;
-  motor.P_angle.P = 30;
+  motor.PID_velocity.P = 0.2;
+  motor.PID_velocity.I = 0.1;
+  motor.P_angle.P = 10;
   
   motor.voltage_limit = 2; // [V] Cuidado ao modificar
 
   motor.LPF_velocity.Tf = 0.01;
-  motor.velocity_limit = 30;
+  motor.velocity_limit = 10;
 
   motor.useMonitoring(Serial);
   motor.init();
@@ -85,19 +85,16 @@ void loop() {
 
     if (elapsed_time < 5000) {
       // Primeiros 5 segundos: vai para 360 graus
-      target_angle_deg = 360.0;
+      target_angle_rad = _2PI;
     } else if (elapsed_time < 10000) {
       // Últimos 5 segundos: volta para 0 graus
-      target_angle_deg = 0.0;
+      target_angle_rad = 0.0;
     } else {
       // Fim do teste
       test_running = false;
-      target_angle_deg = 0.0;
+      target_angle_rad = 0.0;
       Serial.println("Fim do Teste.");
     }
-
-    // Converte o alvo em graus para radianos para o SimpleFOC
-    target_angle_rad = target_angle_deg * _PI / 180.0;
   }
 
   // Move o motor para o alvo em radianos
@@ -113,12 +110,12 @@ void loop() {
   if (test_running) {
     float actual_angle_rad = sensor.getAngle();
     float actual_angle_deg = actual_angle_rad * 180.0 / _PI;
-    float error_deg = target_angle_deg - actual_angle_deg;
+    float error_deg = (target_angle_rad * 180.0 / _PI) - actual_angle_deg;
 
     // Imprime: Tempo (ms), Ângulo Alvo, Ângulo Real, Erro
     Serial.print(millis() - test_start_time);
     Serial.print(",");
-    Serial.print(target_angle_deg);
+    Serial.print((target_angle_rad * 180.0 / _PI));
     Serial.print(",");
     Serial.print(actual_angle_deg);
     Serial.print(",");

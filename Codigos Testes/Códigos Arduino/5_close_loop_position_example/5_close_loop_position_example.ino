@@ -54,10 +54,11 @@ void setup() {
   motor.controller = MotionControlType::angle;
 
   //Speed ​​PI Loop Settings
-  motor.PID_velocity.P = 0.021;
-  motor.PID_velocity.I = 0.12;
+  motor.PID_velocity.P = 0.2;
+  motor.PID_velocity.I = 0.1;
   //Angle P-loop setup
-  motor.P_angle.P = 30;
+  motor.P_angle.P = 10;
+
   //Maximum motor voltage limit
   motor.voltage_limit = 2;  // [V] Please exercise caution when modifying and checking this value; excessive voltage or current may cause the driver board to burn out!!!
 
@@ -65,7 +66,7 @@ void setup() {
   motor.LPF_velocity.Tf = 0.01;
 
   //Set maximum speed limit
-  motor.velocity_limit = 30;
+  motor.velocity_limit = 20;
 
   motor.useMonitoring(Serial);
 
