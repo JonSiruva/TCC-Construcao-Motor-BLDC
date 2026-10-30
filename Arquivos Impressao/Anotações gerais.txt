@@ -1,0 +1,28 @@
+- trava interna e externa: 16 parafusos M3 de 34mm de altura (pode ser aqueles q só tem rosca no final) e 16 porcas M3 de 2.40mm de altura
+- trava de fora: 10 parafusos M2 48mm de altura, rosca no final
+- trava estator: 6 parafusos M2 de 24mm de altura
+- 4 fios, 4 voltas, 40m enrolamento
+- 10m por spool, approx 140 voltas, 25mm diâmetro 
+- Spool: 22mm interno, 50mm externo, 18mm distância, 0,4mm espessura fio
+- escalar ABS 100,8% e tolerância 0,0045
+- teste no characterise motor deu 0,02mH, 0,76 ohms fase a fase
+- Yoke - 51,78g
+- Housing3 - 44,90g
+- Estator - 27,52g
+- Rolamentos - 0,39g
+- Total PLA 125g
+- Rolamentos pequenos - 0,35g
+- Housing2 - 18,00g
+- rolamentos grandes - 24g, 1h28m
+- housing - 109g, 6h30m
+- outputs - 26,5g, 1h34m
+- housing_in - 30g, 1h40m
+- case - 18g, 1h8m
+- Total ABS 18,35g
+- 3V, 350rpm, 120Kv
+- 4V começa a queimar o plástico valendo, 3V em longo uso provavelmente irá queimar
+- housing2 - 1h11min
+- Rotor - 2h45min
+- estator - 2h
+- housing3 - 2h04min  
+- rolamentos - 3min
